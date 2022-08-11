@@ -37,6 +37,17 @@ async function run(){
             res.send(products);
         });
 
+        // get data from id 
+
+        app.get('/products/:id',async(req, res)=>{
+            const id = req.params.id;
+            const query = {_id :ObjectId(id)};
+            const result = await productCollection.findOne(query);
+            res.send(result);
+
+        })
+
+
         // count data 
         app.get('/productCount',async(req, res) => {
             // const query = {};
